@@ -33,8 +33,8 @@ const App = () => {
 
   const [longitude, setLongitude] = useState(0.0);
   const [latitude, setLatitude] = useState(0.0);
-  const [latRange, setLatRange] = useState(0.015);
-  const [lngRange, setLngRange] = useState(0.0121);
+  const [latRange, setLatRange] = useState(0.010);
+  const [lngRange, setLngRange] = useState(0.0009);
   const [canUpdate, setCanUpdate] = useState(false);
   const [fadeAnim, setFadeAnim] = useState(new Animated.Value(0));
   const [stores, setStores] = useState([]);
@@ -154,6 +154,11 @@ const App = () => {
                                 Percentage fee: {store.chargePercent}%
                               </Text>
                             ) : null}
+                            {!store.minimumPurchase &&
+                            !store.chargeFlat &&
+                            !store.chargePercent ? (
+                              <Text>No fee</Text>
+                            ) : null}
                           </View>
                         </Callout>
                       </Marker>
@@ -169,11 +174,12 @@ const App = () => {
                 alignItems: "center",
                 opacity: fadeAnim,
                 position: 'absolute',
-                height: 100,
-                width: 400,
+                height: 40,
+                width: 100,
                 borderRadius: 10,
-                left: (width - 400) / 2,
-                top: height - 150}
+                left: (width - 100) / 2,
+                top: height - 150,
+                backgroundColor: 'white'}
               }>
               <Button onPress={update} title="Update" />
             </Animated.View>
