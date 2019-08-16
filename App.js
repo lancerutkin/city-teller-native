@@ -33,8 +33,8 @@ const App = () => {
 
   const [longitude, setLongitude] = useState(0.0);
   const [latitude, setLatitude] = useState(0.0);
-  const [latRange, setLatRange] = useState(0.010);
-  const [lngRange, setLngRange] = useState(0.0009);
+  const [latRange, setLatRange] = useState(0.018);
+  const [lngRange, setLngRange] = useState(0.003);
   const [canUpdate, setCanUpdate] = useState(false);
   const [fadeAnim, setFadeAnim] = useState(new Animated.Value(0));
   const [stores, setStores] = useState([]);
@@ -89,7 +89,6 @@ const App = () => {
         duration: animatedTiming
       }).start();
       setCanUpdate(true);
-      console.log(latitude, longitude, latRange, lngRange);
     }
   };
 
